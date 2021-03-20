@@ -7,6 +7,7 @@ import Catch from "./Catch";
 export default class Pokemon extends Component {
     constructor(props) {
       super(props);
+      console.log(props.data);
     }
 
     render() {
@@ -17,7 +18,7 @@ export default class Pokemon extends Component {
         <div
           style={{
             border: "1px solid black",
-            width: "100px",
+            width: "200px",
             margin: "5px",
             padding: "5px",
           }}
@@ -27,7 +28,7 @@ export default class Pokemon extends Component {
             <b>{this.props.data.name}</b>
           </p>
           <p>
-            <b>type:</b>{this.props.data.types.map(type => <TypeLink type={type} clickedType={this.props.clickedType} />)}
+            <b>type:</b> {this.props.data.types.map(type => <span><TypeLink key={type} type={type} clickedType={this.props.clickedType} /> </span> )}
           </p>
           <p>
             <b>weight:</b> {this.props.data.weight}

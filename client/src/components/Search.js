@@ -20,7 +20,8 @@ export default class Search extends React.Component {
     .get(`http://localhost:3001/api/pokemon/${this.state.value}`)
     .then((res) => {
       this.props.displayPokemon(res.data);
-    });
+      this.props.isFound(true);
+    }).catch(error => this.props.isFound(false));
     event.preventDefault();
 
   }

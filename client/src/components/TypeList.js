@@ -9,7 +9,7 @@ export default class TypeList extends Component{
 
     render(){
         if (!this.props.typeList) return null;
-        return this.props.typeList.map((pokemon) => 
+        return <h2>Pokemons</h2> + this.props.typeList.map((pokemon) => 
         <li><PokeLink key={pokemon} name={pokemon} displayPokemon={this.props.displayPokemon} /></li>
         );
     }
