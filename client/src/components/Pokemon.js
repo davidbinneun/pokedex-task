@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PokeImage from "./PokeImage";
+import Interact from "./Interact";
+
 export default class Pokemon extends Component {
     constructor(props) {
       super(props);
@@ -9,7 +11,6 @@ export default class Pokemon extends Component {
       if (this.props.pokemon.length === 0) {
         return null;
       }
-      console.log("KAKI");
       return (
         <div
           style={{
@@ -24,7 +25,7 @@ export default class Pokemon extends Component {
             <b>{this.props.pokemon.name}</b>
           </p>
           <p>
-            <b>type:</b> {this.props.pokemon.type}
+            <b>type:</b> {this.props.pokemon.types}
           </p>
           <p>
             <b>weight:</b> {this.props.pokemon.weight}
@@ -33,7 +34,7 @@ export default class Pokemon extends Component {
             <b>height:</b> {this.props.pokemon.height}
           </p>
           <p>
-            <button>hey</button>
+            <Interact pokemon={this.props.pokemon.name} />
           </p>
         </div>
       );

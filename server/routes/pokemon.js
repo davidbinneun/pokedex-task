@@ -8,9 +8,13 @@ pokemon.get("/:name", (req, res) => {
   axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
   .then(response => {
       if (response.status === 200){
+      let types = [];
+
+      for(let slot of response.data.types) types.push(slot.type.name);
+      
       let data = {
         name: name,
-        type: response.data.types[0].type.name,
+        types: types,
         weight: response.data.weight,
         height: response.data.height,
         front_url: response.data.sprites.front_default,
