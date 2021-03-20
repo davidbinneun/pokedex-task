@@ -13,6 +13,7 @@ export default class PokeLink extends React.Component {
         axios
         .get(`http://localhost:3001/api/pokemon/${this.name}`)
         .then((res) => {
+            console.log("handleClick in PokeLink", res.data);
           this.props.displayPokemon(res.data);
         });
     }

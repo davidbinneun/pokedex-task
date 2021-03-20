@@ -27,7 +27,7 @@ export default class Pokemon extends Component {
             <b>{this.props.data.name}</b>
           </p>
           <p>
-            <b>type:</b><TypeLink type={this.props.data.types[0]} clickedType={this.props.clickedType} />
+            <b>type:</b>{this.props.data.types.map(type => <TypeLink type={type} clickedType={this.props.clickedType} />)}
           </p>
           <p>
             <b>weight:</b> {this.props.data.weight}
