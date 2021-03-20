@@ -17,15 +17,12 @@ export default class Search extends React.Component {
 
   handleSubmit(event) {
     axios
-      .get(`http://localhost:3001/api/pokemon/${this.state.value}`)
-      .then((res) => {
-        this.setState({
-          data: res.data,
-        });
-        console.log(res);
-      });
-    console.log(this.state.value);
+    .get(`http://localhost:3001/api/pokemon/${this.state.value}`)
+    .then((res) => {
+      this.props.displayPokemon(res.data);
+    });
     event.preventDefault();
+
   }
 
   render() {
@@ -42,7 +39,6 @@ export default class Search extends React.Component {
           </label>
           <input type="submit" value="Submit" />
         </form>
-        <Pokemon pokemon={this.state.data} />
       </div>
     );
   }

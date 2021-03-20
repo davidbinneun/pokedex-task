@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import axios from "axios";
 import PokeImage from "./PokeImage";
-import Interact from "./Interact";
+import TypeLink from "./TypeLink";
+import Catch from "./Catch";
 
 export default class Pokemon extends Component {
     constructor(props) {
@@ -8,7 +10,7 @@ export default class Pokemon extends Component {
     }
 
     render() {
-      if (this.props.pokemon.length === 0) {
+      if (!this.props.data) {
         return null;
       }
       return (
@@ -20,23 +22,23 @@ export default class Pokemon extends Component {
             padding: "5px",
           }}
         >
-          <PokeImage data={this.props.pokemon} />
+          <PokeImage data={this.props.data} />
           <p>
-            <b>{this.props.pokemon.name}</b>
+            <b>{this.props.data.name}</b>
           </p>
           <p>
-            <b>type:</b> {this.props.pokemon.types}
+            <b>type:</b><TypeLink type={this.props.data.types[0]} clickedType={this.props.clickedType} />
           </p>
           <p>
-            <b>weight:</b> {this.props.pokemon.weight}
+            <b>weight:</b> {this.props.data.weight}
           </p>
           <p>
-            <b>height:</b> {this.props.pokemon.height}
+            <b>height:</b> {this.props.data.height}
           </p>
           <p>
-            <Interact pokemon={this.props.pokemon.name} />
+            <Catch pokemon={this.props.data.name} />
           </p>
         </div>
       );
-    }
+  }
   }
